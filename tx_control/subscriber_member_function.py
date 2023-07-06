@@ -87,7 +87,7 @@ class MinimalSubscriber(Node):
         
         log_file_name = 'log_{}_{}_{}.json'.format(expid, runid,loc)
         log_file_path = os.path.join(self.log_dir_path, log_file_name)
-        
+        # pdb.trace()
         if os.path.exists(log_file_path):
             os.remove(log_file_path)
             msg = (
@@ -151,13 +151,14 @@ def shutdown_hook():
   sys.exit()
 
 def main(args=None):
+    print ("======HERE======")
     rclpy.init(args=args)
     global expid
     global runid
     global loc
     global topic
     global duration
-    log_dir_path = os.path.join( os.path.expanduser('~'),"wifi_ranger", "logs")
+    log_dir_path = os.path.join( "/home/minarady","wifi_ranger", "logs")
     minimal_subscriber = MinimalSubscriber(
         log_dir_path,
         expid,
